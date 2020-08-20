@@ -1,0 +1,9 @@
+*.gmt
+test
+*.cpt
+*.conf
+gmt.*
+*.dat
+*.pdf
+*.ps
+*times
