@@ -5,21 +5,6 @@ if [ $(pwd | awk -F"/" '{print $NF}') != scatter_energy ]; then
    exit
 fi
 
-if [ ! -e ../P_energy.dat ]; then
-   echo "Could not find ../P_energy.dat"
-   exit 
-fi
-
-if [ ! -e ../describe ]; then
-   echo "Could not find ../describe"
-   exit 
-fi
-
-if [ ! -e ../beammax_clean ]; then
-   echo "Could not find ../beammax_clean"
-   exit 
-fi
-
 cwd=..
 alat=$(grep array_centroid_lat $cwd/describe | awk '{print $2}')
 alon=$(grep array_centroid_lon $cwd/describe | awk '{print $2}')
@@ -42,7 +27,6 @@ t_end=$((${tpp%.*}+20))
 vproj=X14c/6c
 vreg=$t_start/$t_end/0/40
 
-lines=$(wc -l ../beammax_clean | awk '{print $1}')
 
 gmt set FONT_ANNOT_PRIMARY              10p,Helvetica,black
 gmt set FONT_ANNOT_SECONDARY            10p,Helvetica,black

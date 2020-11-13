@@ -53,15 +53,15 @@ gmt surface $vesp_file/vesp_${2}.dat -R$region -G$vesp_file/tmp_${2}.grd -I0.2/0
 
 gmt grdimage $vesp_file/tmp_${2}.grd -R$region -J$scale -BSWne+t"baz:$2, gcarc:$gcarc, evdp:$evdp"  \
                     -Bxa50f10+l"Time (s)" -Bxg50 -Byg10 -Bya10f2+l"Incidence Angle (deg)" \
-                    -C$vesp_file/cmap_${2}.cpt -nl -K  > $file.ps
+                    -C$vesp_file/cmap_${2}.cpt -nl -K -P > $file.ps
 
 if [ $# == 5 ]; then
    awk -v baz=$2 '{if($1==baz) print $3,$2}' $5 | \
-   gmt psxy -J$scale -R$region -Sx2.25c -W1p,green -K -O >> $file.ps
+   gmt psxy -J$scale -R$region -Sx2.25c -W1p,green -K -O -P>> $file.ps
 fi
 
 gmt grdcontour $vesp_file/tmp_${2}.grd -R$region -J$scale  \
-                    -C$SRC/beamform_plot/cont_int -K -O >> $file.ps
+                    -C$SRC/beamform_plot/cont_int -K -O -P >> $file.ps
 
 
 #rm vespagram/cmap_${2}.cpt
