@@ -32,10 +32,11 @@ h=$(grep event_depth describe | awk '{print $2}')
 #baz_start=$((${baz%.*}-60))
 #baz_end=$((${baz%.*}+60))
 
-t_start=150
-t_end=400
+t_start=175
+t_end=350
 baz_start=0
-baz_start=359
+baz_end=359
+baz_inc=1
 
 nodes=(`scontrol show hostnames $SLURM_JOB_NODELIST`)
 i=0
